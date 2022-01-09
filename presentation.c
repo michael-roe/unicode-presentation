@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <wchar.h>
+#include <unistd.h>
 
 static wchar_t *presentation[] =
   {
@@ -80,10 +81,26 @@ int main(int argc, char **argv)
 {
 int c;
 int i;
-int supress_lrm = 1;
-int dump_table = 1;
+int opt;
+int supress_lrm = 0;
+int dump_table =  0;
 
   setlocale(LC_ALL, getenv("LANG"));
+
+  while ((opt = getopt(argc, argv, "dl")) != -1)
+  {
+    switch (opt)
+    {
+      case 'd':
+        dump_table = 1;
+	break;
+      case 'l':
+	supress_lrm = 1;
+	break;
+      default:
+	break;
+    }
+  }
 
   if (dump_table)
   {
