@@ -121,7 +121,7 @@ int dump_table =  0;
         putwchar(c);
       }
     }
-    else if ((c >= 0xfb00) && (c <= 0xfb26 /* 0xfb47 */))  
+    else if ((c >= 0xfb00) && (c <= 0xfb29 /* 0xfb47 */))  
     {
       if (presentation[c - 0xfb00])
       {
